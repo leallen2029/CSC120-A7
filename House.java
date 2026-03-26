@@ -1,12 +1,40 @@
 /* This is a stub for the House class */
-public class House {
+import java.util.ArrayList;
 
-  public House() {
-    System.out.println("You have built a house: 🏠");
+public class House extends Building implements HouseRequirements {
+  private ArrayList<Student> residents;
+  private boolean hasDiningRoom;
+  public int nResidents;
+  ;
+
+  public House(String name, String address, int nFloors, boolean hasDiningRoom) {
+        super(name, address, nFloors);
+        this.residents = new ArrayList<Student>();
+        this.hasDiningRoom = hasDiningRoom;
+        System.out.println("You have built a house: 🏠");
+    }
+
+  public boolean hasDiningRoom() {
+    return this.hasDiningRoom;
   }
 
-  public static void main(String[] args) {
-    new House();
+  public int nResidents() {
+    return this.residents.size();
   }
 
-}
+  public void moveIn(Student student) {
+    this.residents.add(student);
+  }
+
+  public void moveOut(Student student) {
+    this.residents.remove(student);
+  }
+
+  public boolean isResident(Student student) {
+    return this.residents.contains(student);
+  }
+
+    public static void main(String[] args) {
+      new House("Landree's house", "100 Green Street Northampton, MA 01063", 2, true);
+    }
+  }
