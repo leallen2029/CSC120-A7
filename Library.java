@@ -29,25 +29,35 @@ public class Library extends Building implements LibraryRequirements {
     public void returnBook(String title) {
       collection.put(title, true);
     }
-    public boolean containsTitle(String title){
-      return collection.containsKey(title);
+    public boolean containsTitle(String title){  // returns true if the title appears as a key in the Libary's collection, false otherwise
+      if (collection.containsKey(title)){
+        return true;
+      } return false;
     }
-    // returns true if the title appears as a key in the Libary's collection, false otherwise
-    public boolean isAvailable(String title){
-      return collection.get(title);
-    } // returns true if the title is currently available, false otherwise
-    public void printCollection(){ // prints out the entire collection in an easy-to-read way (including checkout status)
-      for (String title : collection.keySet()) {
-        System.out.println(title + ": " + (collection.get(title) ? "Available" : "Checked Out"));
+
+    public boolean isAvailable(String title){ // returns true if the title is currently available, false otherwise
+      if (collection.get(title) == true){
+        return true;
+      } return false;
+    } 
+    
+    
+  public void printCollection(){ // prints out the entire collection in an easy-to-read way (including checkout status)
+    for (String title : collection.keySet()) {
+      if (collection.get(title)) {
+        System.out.println(title + ": Available");
+  }   else {
+        System.out.println(title + ": Checked Out");
       }
-}
+    }
+  }
 
 
 
 
 
     public static void main(String[] args) {
-      new Library();
+      new Library("Main Library", "123 Main Street", 3);
     }
 
 
