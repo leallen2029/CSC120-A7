@@ -2,16 +2,20 @@
 import java.util.Hashtable;
 
 public class Library extends Building implements LibraryRequirements {
-  public boolean isAvailable(String title);
   private Hashtable<String, Boolean> collection;
 
-    public Library() {
+    public Library(String name, String address, int nFloors) {
+      super(name, address, nFloors);
       collection = new Hashtable<>();
       System.out.println("You have built a library: 📖");
     }
 
     public void addBook(String title, boolean isAvailable) {
       collection.put(title, isAvailable);
+    }
+
+    public void addTitle(String title) {
+      collection.put(title, true);
     }
     public String removeTitle(String title){
       returnBook(title);
@@ -37,6 +41,11 @@ public class Library extends Building implements LibraryRequirements {
         System.out.println(title + ": " + (collection.get(title) ? "Available" : "Checked Out"));
       }
 }
+
+
+
+
+
     public static void main(String[] args) {
       new Library();
     }
