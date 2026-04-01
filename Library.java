@@ -18,7 +18,7 @@ public class Library extends Building implements LibraryRequirements {
       collection.put(title, true);
     }
     public String removeTitle(String title){
-      returnBook(title);
+      collection.remove(title);
       return title;
     }
 
